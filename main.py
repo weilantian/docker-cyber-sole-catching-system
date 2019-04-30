@@ -27,7 +27,13 @@ chrome_driver = webdriver.Chrome(chrome_options=chrome_options)
 def index():
    return render_template('index.html')
 
+@app.route('/now_code')
+def now_code():
+   global code,updated_time
+   
 
+def startServer():
+   app.run(debug=False,port=3000)
 
 if __name__ == "__main__":
-    pass
+    startServer()
