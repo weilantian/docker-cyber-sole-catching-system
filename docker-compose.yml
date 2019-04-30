@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+  cybercolecatchingsystem:
+    image: cybercolecatchingsystem
+    build: .
+    ports:
+      - 3000:3000
+  chrome:
+    image: selenium/node-chrome:3.14.0-gallium
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+  
+
+  hub:
+    image: selenium/hub:3.14.0-gallium
+    ports:
+      - "4444:4444"
