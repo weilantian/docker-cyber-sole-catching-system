@@ -3,7 +3,10 @@
 # OS Support also exists for jessie & stretch (slim and full).
 # See https://hub.docker.com/r/library/python/ for all supported Python
 # tags from Docker Hub.
-FROM python:alpine
+FROM python:3.6.8-jessie
+
+
+#RUN apt-get update && apt-get install build-essential
 
 # If you prefer miniconda:
 #FROM continuumio/miniconda3
@@ -15,7 +18,9 @@ WORKDIR /app
 ADD . /app
 
 # Using pip:
-RUN python3 -m pip install -r requirements.txt
+
+
+RUN python3 -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 CMD ["python3", "-m", "main.py"]
 
 # Using pipenv:
