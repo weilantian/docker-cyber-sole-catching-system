@@ -6,7 +6,6 @@ from twilio.rest import Client
 from flask import Flask,render_template
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from os import path
 
 path_of_the_program = path.dirname(__file__)
@@ -21,8 +20,8 @@ twilio_auth_token = 'b78a6784b0efbe8352f5119cce866274'
 twilio_client = Client(twilio_account_sid,twilio_auth_token)
 # It's a kind of free sms service.
 
-chrome_options = Options()
-chrome_driver = webdriver.Chrome(chrome_options=chrome_options)
+
+firefox_driver = webdriver.Firefox()
 
 @app.route('/')
 def index():
@@ -44,13 +43,13 @@ def send_image():
 
 
 def make_screen_shot():
-   global chrome_driver
-   chrome_driver.get("https://cybersole.io")
-   chrome_driver.maximize_window()
+   global firefox_driver
+   firefox_driver.get("https://cybersole.io")
+   firefox_driver.maximize_window()
    sleep(1)
    scroll_js = "window.scrollTo(0,300)"
-   chrome_driver.execute_script(scroll_js)
-   chrome_driver.get_screenshot_as_file(path_of_the_program+r"\static\screen_shot.png")
+   firefox_driver.execute_script(scroll_js)
+   firefox_driver.get_screenshot_as_file(path_of_the_program+r"\static\screen_shot.png")
 
 
 def main():

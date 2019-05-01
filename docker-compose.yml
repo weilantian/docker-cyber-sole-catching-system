@@ -7,16 +7,8 @@ services:
     ports:
       - 3000:3000
   chrome:
-    image: selenium/node-chrome:3.14.0-gallium
+    image: elgalu/selenium
     volumes:
       - /dev/shm:/dev/shm
-    depends_on:
-      - hub
-    environment:
-      HUB_HOST: hub
-  
-
-  hub:
-    image: selenium/hub:3.14.0-gallium
     ports:
-      - "4444:4444"
+      - 4444:24444

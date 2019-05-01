@@ -3,7 +3,36 @@
 # OS Support also exists for jessie & stretch (slim and full).
 # See https://hub.docker.com/r/library/python/ for all supported Python
 # tags from Docker Hub.
-FROM python:3.6.8-jessie
+FROM ubuntu:xenial-20181113
+
+RUN apt -qqy update \
+  && apt -qqy --no-install-recommends install \
+    python3 \
+    python3-pip \
+    python3-dev \
+    python3-openssl \
+    libssl-dev libffi-dev \
+  && pip3 install --no-cache --upgrade pip==9.0.3 \
+  && pip3 install --no-cache setuptools \
+  && pip3 install --no-cache numpy \
+  && pip3 install --no-cache --requirement /test/requirements.txt \
+  && rm -rf /var/lib/apt/lists/* \
+  && apt -qyy clean
+RUN cd /usr/local/bin \
+  && { [ -e easy_install ] || ln -s easy_install-* easy_install; } \
+  && ln -s idle3 idle \
+  && ln -s pydoc3 pydoc \
+  && ln -s python3 python \
+  && ln -s python3-config python-config \
+  && ln -s /usr/bin/python3 /usr/bin/python \
+  && python --version \
+  && pip --version
+
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz \
+    && tar -xvzf geckodriver-v0.23.0-linux64.tar.gz \
+    && chmod +x geckodriver \
+    && sudo mv geckodriver /usr/local/bin/
+
 
 
 #RUN apt-get update && apt-get install build-essential
@@ -13,7 +42,6 @@ FROM python:3.6.8-jessie
 
 LABEL Name=cybercolecatchingsystem Version=0.0.1
 EXPOSE 3000
-
 WORKDIR /app
 ADD . /app
 
