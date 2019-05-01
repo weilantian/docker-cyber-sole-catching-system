@@ -3,7 +3,7 @@ version: '2.1'
 services:
   cybercolecatchingsystem:
     image: cybercolecatchingsystem
-    build: .
+    #build: .
     ports:
       - 3000:3000
   chrome:
