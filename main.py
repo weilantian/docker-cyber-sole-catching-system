@@ -22,7 +22,7 @@ twilio_client = Client(twilio_account_sid,twilio_auth_token)
 
 
 firefox_driver = webdriver.Remote(
-command_executor='http://172.31.28.42:4444/wd/hub',
+command_executor='http://127.0.0.1:4444/wd/hub',
 desired_capabilities={'browserName': 'firefox'}
 )
 
