@@ -12,7 +12,6 @@ RUN apt -qqy update \
     python3-dev \
     python3-openssl \
     wget \
-    xorg-x11-server-Xvfb \
     bzip \
     gtk3 \
     libssl-dev libffi-dev \
@@ -32,15 +31,15 @@ RUN cd /usr/local/bin \
   && python --version \
   && pip --version
 
-RUN cd /usr/local \
-    && wget https://ftp.mozilla.org/pub/firefox/releases/56.0.2/linux-x86_64/en-US/firefox-56.0.2.tar.bz2 \
-    && tar xjvf firefox-56.0.2.tar.bz2 \
-    && ln -s /usr/local/firefox/firefox /usr/bin/firefox
+# RUN cd /usr/local \
+#     && wget https://ftp.mozilla.org/pub/firefox/releases/56.0.2/linux-x86_64/en-US/firefox-56.0.2.tar.bz2 \
+#     && tar xjvf firefox-56.0.2.tar.bz2 \
+#     && ln -s /usr/local/firefox/firefox /usr/bin/firefox
 
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz \
-    && tar -xvzf geckodriver-v0.23.0-linux64.tar.gz \
-    && chmod +x geckodriver \
-    && mv geckodriver /usr/local/bin/
+# RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodriver-v0.19.1-linux64.tar.gz \
+#     && tar -xvzf geckodriver-v0.23.0-linux64.tar.gz \
+#     && chmod +x geckodriver \
+#     && mv geckodriver /usr/local/bin/
 
 
 

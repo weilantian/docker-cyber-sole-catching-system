@@ -21,7 +21,11 @@ twilio_client = Client(twilio_account_sid,twilio_auth_token)
 # It's a kind of free sms service.
 
 
-firefox_driver = webdriver.Firefox()
+firefox_driver = webdriver.Remote(
+command_executor='http://127.0.0.1:4444/wd/hub',
+desired_capabilities={'browserName': 'firefox'}
+)
+
 
 @app.route('/')
 def index():
