@@ -73,7 +73,7 @@ def big_event_reporter() :
 def main():
    print("[BoT] The system now started to work.")
    global webside_raw,updated_time
-   not_the_first_time_spy_on_the_webside_question_mark = True
+   not_the_first_time_spy_on_the_webside_question_mark = False
    while True:
       sleep(30)
       # TODO: I want to make a config file whcih can set the time between every spy
