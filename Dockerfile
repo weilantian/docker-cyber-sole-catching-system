@@ -11,9 +11,6 @@ RUN apt -qqy update \
     python3-pip \
     python3-dev \
     python3-openssl \
-    wget \
-    bzip \
-    gtk3 \
     libssl-dev libffi-dev \
   && pip3 install --no-cache --upgrade pip==9.0.3 \
   && pip3 install --no-cache setuptools \
