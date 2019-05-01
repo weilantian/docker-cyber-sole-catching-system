@@ -6,6 +6,7 @@ from twilio.rest import Client
 from flask import Flask,render_template
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from os import path
 
 path_of_the_program = path.dirname(__file__)
@@ -23,7 +24,7 @@ twilio_client = Client(twilio_account_sid,twilio_auth_token)
 
 firefox_driver = webdriver.Remote(
 command_executor='http://127.0.0.1:4444/wd/hub',
-desired_capabilities={'browserName': 'firefox'}
+desired_capabilities=DesiredCapabilities.FIREFOX
 )
 
 
