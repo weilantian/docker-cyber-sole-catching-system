@@ -48,7 +48,7 @@ ADD . /app
 # Using pip:
 
 
-RUN python3 -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+RUN python3 -m pip install -r requirements.txt
 CMD ["python3", "-m", "main.py"]
 
 # Using pipenv:
