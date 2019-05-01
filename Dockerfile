@@ -15,7 +15,6 @@ RUN apt -qqy update \
   && pip3 install --no-cache --upgrade pip==9.0.3 \
   && pip3 install --no-cache setuptools \
   && pip3 install --no-cache numpy \
-  && pip3 install --no-cache --requirement /test/requirements.txt \
   && rm -rf /var/lib/apt/lists/* \
   && apt -qyy clean
 RUN cd /usr/local/bin \
