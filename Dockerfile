@@ -51,7 +51,7 @@ ADD . /app
 RUN python3 -m pip install -r requirements.txt
 CMD ["python3", "-m", "main.py"]
 
-# Using pipenv:
+# Using pipenvv:
 #RUN python3 -m pip install pipenv
 #RUN pipenv install --ignore-pipfile
 #CMD ["pipenv", "run", "python3", "-m", "cybercolecatchingsystem"]
