@@ -55,7 +55,7 @@ ADD . /app
 
 
 RUN python3 -m pip install -r requirements.txt
-CMD ["python3", "-m", "main.py"]
+CMD ["python3", "thebot.py"]
 
 # Using pipenvv:
 #RUN python3 -m pip install pipenv
