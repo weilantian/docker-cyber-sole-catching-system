@@ -10,8 +10,8 @@ from wxpy import *
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from os import path
 
-wxbot = Bot(cache_path=True,console_qr=True)
-hugo_my_friend = wxbot.friends().search('Damn HUGO')[0]
+wxbot = None
+hugo_my_friend = None
 
 path_of_the_program = path.dirname(__file__)
 app = Flask(__name__)
@@ -71,11 +71,17 @@ def big_event_reporter() :
 
 
 def main():
+   global webside_raw,updated_time,wxbot,hugo_my_friend
    print("[BoT] The system now started to work.")
-   global webside_raw,updated_time
+   wxbot = Bot(cache_path=True,qr_path=path_of_the_program+r"\static\s.png")
+   hugo_my_friend =  wxbot.friends().search('Damn HUGO')[0]
+   hugo_my_friend.send('[SKY_BOT]HUGO监控程序启动成功。')
+   
    not_the_first_time_spy_on_the_webside_question_mark = False
    while True:
-      sleep(30)
+      if not_the_first_time_spy_on_the_webside_question_mark:
+         sleep(300)
+      
       # TODO: I want to make a config file whcih can set the time between every spy
       print("[BoT]The bot now started to spy.")
       updated_time = time()
@@ -98,9 +104,9 @@ def main():
    
 
 def startServer():
-   hugo_my_friend.send('[SKY_BOT]HUGO监控程序启动成功。')
    _thread.start_new_thread(main,())
    app.run(debug=False,port=3000)
+   
 
 if __name__ == "__main__":
     startServer()

@@ -28,6 +28,7 @@ RUN cd /usr/local/bin \
   && python --version \
   && pip --version
 
+ENV PYTHON_BIN_PATH="/usr/bin/python3"
 # RUN cd /usr/local \
 #     && wget https://ftp.mozilla.org/pub/firefox/releases/56.0.2/linux-x86_64/en-US/firefox-56.0.2.tar.bz2 \
 #     && tar xjvf firefox-56.0.2.tar.bz2 \
